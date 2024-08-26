@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 /// An end-aligned row of buttons.
 ///
@@ -28,7 +27,7 @@ class ButtonBar extends StatelessWidget {
   ///
   /// The alignment argument defaults to [MainAxisAlignment.end].
   const ButtonBar({
-    Key key,
+    Key? key,
     this.alignment = MainAxisAlignment.end,
     this.mainAxisSize = MainAxisSize.max,
     this.children = const <Widget>[],
@@ -43,7 +42,7 @@ class ButtonBar extends StatelessWidget {
   /// The buttons to arrange horizontally.
   ///
   /// Typically [RaisedButton] or [FlatButton] widgets.
-  final List<Widget> children;
+  final List<Widget>? children;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +52,7 @@ class ButtonBar extends StatelessWidget {
     final Widget child = Row(
       mainAxisAlignment: alignment,
       mainAxisSize: mainAxisSize,
-      children: children.map<Widget>((Widget child) {
+      children: children!.map<Widget>((Widget child) {
         return Padding(
           padding: EdgeInsets.symmetric(horizontal: paddingUnit),
           child: child,
@@ -77,7 +76,5 @@ class ButtonBar extends StatelessWidget {
           child: child,
         );
     }
-    assert(false);
-    return null;
   }
 }

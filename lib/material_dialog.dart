@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:material_dialog/widgets/dialog.dart' as dialog;
 
 class MaterialDialog extends StatelessWidget {
-  final Widget title;
-  final Widget subTitle;
-  final Widget content;
-  final List<Widget> actions;
-  final List<Widget> children;
-  final Color headerColor;
+  final Widget? title;
+  final Widget? subTitle;
+  final Widget? content;
+  final List<Widget>? actions;
+  final List<Widget>? children;
+  final Color? headerColor;
   final Color backButtonColor;
   final Color closeButtonColor;
   final Color backgroundColor;
@@ -18,11 +18,11 @@ class MaterialDialog extends StatelessWidget {
   final bool enableBackButton;
   final bool enableCloseButton;
   final double borderRadius;
-  final VoidCallback onBackButtonClicked;
-  final VoidCallback onCloseButtonClicked;
+  final VoidCallback? onBackButtonClicked;
+  final VoidCallback? onCloseButtonClicked;
 
   const MaterialDialog({
-    Key key,
+    Key? key,
     this.title,
     this.subTitle,
     this.content,

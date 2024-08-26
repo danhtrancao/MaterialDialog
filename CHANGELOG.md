@@ -34,3 +34,7 @@
 ## [0.0.9] - 04-Dec-2019.
 * updated readme.md file
 
+## [1.0.0-nullsafety.0] - 17-Apr-2021.
+* migrated to flutter 2.0
+* migrated to null-safety
+

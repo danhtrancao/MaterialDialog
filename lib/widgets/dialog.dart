@@ -29,7 +29,7 @@ class Dialog extends StatelessWidget {
   ///
   /// Typically used in conjunction with [showDialog].
   const Dialog({
-    Key key,
+    Key? key,
     this.backgroundColor,
     this.elevation,
     this.insetAnimationDuration = const Duration(milliseconds: 100),
@@ -45,7 +45,7 @@ class Dialog extends StatelessWidget {
   ///
   /// If `null`, [ThemeData.cardColor] is used.
   /// {@endtemplate}
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// {@template flutter.material.dialog.elevation}
   /// The z-coordinate of this [Dialog].
@@ -54,7 +54,7 @@ class Dialog extends StatelessWidget {
   /// dialog's elevation is 24.0.
   /// {@endtemplate}
   /// {@macro flutter.material.material.elevation}
-  final double elevation;
+  final double? elevation;
 
   /// The duration of the animation to show when the system keyboard intrudes
   /// into the space that the dialog is placed in.
@@ -75,12 +75,12 @@ class Dialog extends StatelessWidget {
   ///
   /// The default shape is a [RoundedRectangleBorder] with a radius of 2.0.
   /// {@endtemplate}
-  final ShapeBorder shape;
+  final ShapeBorder? shape;
 
   /// The widget below this widget in the tree.
   ///
   /// {@macro flutter.widgets.child}
-  final Widget child;
+  final Widget? child;
 
   // TODO(johnsonmh): Update default dialog border radius to 4.0 to match material spec.
   static const RoundedRectangleBorder _defaultDialogShape =
@@ -155,7 +155,7 @@ class Dialog extends StatelessWidget {
 class SimpleDialogOption extends StatelessWidget {
   /// Creates an option for a [SimpleDialog].
   const SimpleDialogOption({
-    Key key,
+    Key? key,
     this.onPressed,
     this.child,
   }) : super(key: key);
@@ -166,12 +166,12 @@ class SimpleDialogOption extends StatelessWidget {
   ///
   /// When used in a [SimpleDialog], this will typically call [Navigator.pop]
   /// with a value for [showDialog] to complete its future with.
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   /// The widget below this widget in the tree.
   ///
   /// Typically a [Text] widget.
-  final Widget child;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
@@ -259,7 +259,7 @@ class SimpleDialog extends StatelessWidget {
   ///
   /// The [titlePadding] and [contentPadding] arguments must not be null.
   const SimpleDialog({
-    Key key,
+    Key? key,
     this.title,
     this.subTitle,
     this.titlePadding = const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
@@ -282,21 +282,19 @@ class SimpleDialog extends StatelessWidget {
     this.onCloseClick,
     this.enableBackButton,
     this.enableCloseButton,
-  })  : assert(titlePadding != null),
-        assert(contentPadding != null),
-        super(key: key);
+  }) : super(key: key);
 
   /// The (optional) title of the dialog is displayed in a large font at the top
   /// of the dialog.
   ///
   /// Typically a [Text] widget.
-  final Widget title;
+  final Widget? title;
 
   /// The (optional) subtitle of the dialog is displayed below title
   /// of the dialog.
   ///
   /// Typically a [Text] widget.
-  final Widget subTitle;
+  final Widget? subTitle;
 
   /// Padding around the title.
   ///
@@ -313,7 +311,7 @@ class SimpleDialog extends StatelessWidget {
   /// [SingleChildScrollView] underneath the title.
   ///
   /// Typically a list of [SimpleDialogOption]s.
-  final List<Widget> children;
+  final List<Widget>? children;
 
   /// Padding around the content.
   ///
@@ -336,13 +334,13 @@ class SimpleDialog extends StatelessWidget {
   /// message. As noted in the [AlertDialog] documentation, it's important
   /// to use a [SingleChildScrollView] if there's any risk that the content
   /// will not fit.
-  final Widget content;
+  final Widget? content;
 
   /// Style for the text in the [content] of this [AlertDialog].
   ///
   /// If null, [DialogTheme.contentTextStyle] is used, if that's null, defaults
   /// to [ThemeData.textTheme.subhead].
-  final TextStyle contentTextStyle;
+  final TextStyle? contentTextStyle;
 
   /// The (optional) set of actions that are displayed at the bottom of the
   /// dialog.
@@ -355,14 +353,14 @@ class SimpleDialog extends StatelessWidget {
   /// If the [title] is not null but the [content] _is_ null, then an extra 20
   /// pixels of padding is added above the [ButtonBar] to separate the [title]
   /// from the [actions].
-  final List<Widget> actions;
+  final List<Widget>? actions;
 
   /// {@macro flutter.material.dialog.backgroundColor}
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// {@macro flutter.material.dialog.elevation}
   /// {@macro flutter.material.material.elevation}
-  final double elevation;
+  final double? elevation;
 
   /// The semantic label of the dialog used by accessibility frameworks to
   /// announce screen transitions when the dialog is opened and closed.
@@ -375,21 +373,21 @@ class SimpleDialog extends StatelessWidget {
   ///
   ///  * [SemanticsConfiguration.isRouteName], for a description of how this
   ///    value is used.
-  final String semanticLabel;
+  final String? semanticLabel;
 
   /// {@macro flutter.material.dialog.shape}
-  final ShapeBorder shape;
+  final ShapeBorder? shape;
 
   final enableFullWidth;
   final enableFullHeight;
-  final Color headerColor;
-  final Color backButtonColor;
-  final Color closeButtonColor;
-  final double borderRadius;
-  final VoidCallback onBackClick;
-  final VoidCallback onCloseClick;
-  final bool enableBackButton;
-  final bool enableCloseButton;
+  final Color? headerColor;
+  final Color? backButtonColor;
+  final Color? closeButtonColor;
+  final double? borderRadius;
+  final VoidCallback? onBackClick;
+  final VoidCallback? onCloseClick;
+  final bool? enableBackButton;
+  final bool? enableCloseButton;
 
   @override
   Widget build(BuildContext context) {
@@ -397,7 +395,7 @@ class SimpleDialog extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     final DialogTheme dialogTheme = DialogTheme.of(context);
     final List<Widget> body = <Widget>[];
-    String label = semanticLabel;
+    String? label = semanticLabel;
 
     if (title != null) {
       body.add(
@@ -406,13 +404,13 @@ class SimpleDialog extends StatelessWidget {
           decoration: BoxDecoration(
             color: headerColor,
             borderRadius: BorderRadius.only(
-              topRight: Radius.circular(borderRadius),
-              topLeft: Radius.circular(borderRadius),
+              topRight: Radius.circular(borderRadius!),
+              topLeft: Radius.circular(borderRadius!),
             ),
           ),
           child: Row(
             children: <Widget>[
-              enableBackButton
+              enableBackButton!
                   ? IconButton(
                       icon: Icon(
                         Icons.arrow_back,
@@ -423,15 +421,15 @@ class SimpleDialog extends StatelessWidget {
                   : SizedBox.shrink(),
               Expanded(
                 child: Padding(
-                  padding: enableBackButton
-                      ? EdgeInsets.all(12.0)
-                      : EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+                  padding: enableBackButton!
+                      ? EdgeInsets.all(16.0)
+                      : EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       DefaultTextStyle(
-                        style: theme.textTheme.title,
+                        style: theme.textTheme.titleLarge!,
                         child: Semantics(namesRoute: true, child: title),
                       ),
 //                      SizedBox(height: 4.0),
@@ -439,15 +437,15 @@ class SimpleDialog extends StatelessWidget {
                           ? DefaultTextStyle(
                               style: contentTextStyle ??
                                   dialogTheme.contentTextStyle ??
-                                  theme.textTheme.subhead,
-                              child: subTitle,
+                                  theme.textTheme.titleMedium!,
+                              child: subTitle!,
                             )
                           : SizedBox.shrink()
                     ],
                   ),
                 ),
               ),
-              enableCloseButton
+              enableCloseButton!
                   ? IconButton(
                       icon: Icon(
                         Icons.clear,
@@ -468,7 +466,17 @@ class SimpleDialog extends StatelessWidget {
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
           label =
-              semanticLabel ?? MaterialLocalizations.of(context)?.dialogLabel;
+              semanticLabel ?? MaterialLocalizations.of(context).dialogLabel;
+          break;
+        case TargetPlatform.linux:
+          // TODO: Handle this case.
+          break;
+        case TargetPlatform.macOS:
+          // TODO: Handle this case.
+          break;
+        case TargetPlatform.windows:
+          // TODO: Handle this case.
+          break;
       }
     }
 
@@ -477,15 +485,15 @@ class SimpleDialog extends StatelessWidget {
         Flexible(
           child: Padding(
             padding: title == null
-                ? EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0)
+                ? EdgeInsets.all(16.0)
                 : children == null
-                    ? EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0)
+                    ? EdgeInsets.all(16.0)
                     : EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
             child: DefaultTextStyle(
               style: contentTextStyle ??
                   dialogTheme.contentTextStyle ??
-                  theme.textTheme.subhead,
-              child: content,
+                  theme.textTheme.titleMedium!,
+              child: content!,
             ),
           ),
         ),
@@ -498,7 +506,7 @@ class SimpleDialog extends StatelessWidget {
           fit: FlexFit.loose,
           child: SingleChildScrollView(
             padding: contentPadding,
-            child: ListBody(children: children),
+            child: ListBody(children: children!),
           ),
         ),
       );
@@ -512,7 +520,7 @@ class SimpleDialog extends StatelessWidget {
             (enableFullWidth &&
                         MediaQuery.of(context).orientation !=
                             Orientation.portrait) ||
-                    actions.length < 3
+                    actions!.length < 3
                 ? buttonBar.ButtonBar(
                     children: actions,
                   )
@@ -609,31 +617,28 @@ Widget _buildMaterialDialogTransitions(
 ///  * [showCupertinoDialog], which displays an iOS-style dialog.
 ///  * [showGeneralDialog], which allows for customization of the dialog popup.
 ///  * <https://material.io/design/components/dialogs.html>
-Future<T> showDialog<T>({
-  @required
-      BuildContext context,
+Future<T?> showDialog<T>({
+  required BuildContext context,
   bool barrierDismissible = true,
   @Deprecated(
       'Instead of using the "child" argument, return the child from a closure '
       'provided to the "builder" argument. This will ensure that the BuildContext '
       'is appropriate for widgets built in the dialog.')
-      Widget child,
-  WidgetBuilder builder,
+  Widget? child,
+  WidgetBuilder? builder,
 }) {
   assert(child == null || builder == null);
   assert(debugCheckHasMaterialLocalizations(context));
 
-  final ThemeData theme = Theme.of(context, shadowThemeOnly: true);
+  final ThemeData theme = Theme.of(context);
   return showGeneralDialog(
     context: context,
     pageBuilder: (BuildContext buildContext, Animation<double> animation,
         Animation<double> secondaryAnimation) {
-      final Widget pageChild = child ?? Builder(builder: builder);
+      final Widget pageChild = child ?? Builder(builder: builder!);
       return SafeArea(
         child: Builder(builder: (BuildContext context) {
-          return theme != null
-              ? Theme(data: theme, child: pageChild)
-              : pageChild;
+          return Theme(data: theme, child: pageChild);
         }),
       );
     },
